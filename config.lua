@@ -171,10 +171,12 @@ lvim.builtin.terminal.shading_factor = 1
 -- *
 -- Nvimtree
 -- *
-lvim.builtin.nvimtree.active = false
--- lvim.builtin.nvimtree.side = "left"
--- lvim.builtin.nvimtree.show_icons.git = 1
--- lvim.builtin.nvimtree.hide_dotfiles = 0
+-- currently revert back to commit dc630d199a0ad593036d193232c6b338aa0407e3
+-- because of session-related bug
+lvim.builtin.nvimtree.active = true
+lvim.builtin.nvimtree.side = "left"
+lvim.builtin.nvimtree.show_icons.git = 1
+lvim.builtin.nvimtree.hide_dotfiles = 0
 
 -- *
 -- Treesitter
@@ -194,7 +196,7 @@ lvim.builtin.which_key.mappings["w"] = { "<cmd>w<CR>", "Save" }
 lvim.builtin.which_key.mappings["W"] = { "<cmd>w!<CR>", "Force Save" }
 lvim.builtin.which_key.mappings["q"] = { "<cmd>q<CR>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
-lvim.builtin.which_key.mappings["e"] = { "<cmd>lua require('lir.float').toggle()<cr>", "Files" }
+-- lvim.builtin.which_key.mappings["e"] = { "<cmd>lua require('lir.float').toggle()<cr>", "Files" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
 lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
 lvim.builtin.which_key.mappings["s"]["f"] = {
