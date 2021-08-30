@@ -206,8 +206,8 @@ lvim.builtin.which_key.mappings["s"]["f"] = {
 lvim.builtin.which_key.mappings["s"]["m"] = { "<cmd>Telescope marks<cr>", "Search Marks" }
 lvim.builtin.which_key.mappings["s"]["g"] = { "<cmd>Telescope git_files<cr>", "Search Git Files" }
 
-lvim.builtin.which_key.mappings["w"]["s"] = { ":SaveSession<cr>", "Save session" }
-lvim.builtin.which_key.mappings["w"]["l"] = { ":RestoreSession<cr>", "Restore session" }
+lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>SaveSession<cr>", "Save session" }
+lvim.builtin.which_key.mappings["s"]["l"] = { "<cmd>RestoreSession<cr>", "Restore session" }
 lvim.builtin.which_key.mappings["t"] = {
 	name = "Toggle",
 	h = { "<cmd>set hlsearch!<CR>", "Toggle Highlight" },
