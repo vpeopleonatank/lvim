@@ -43,6 +43,9 @@ lvim.keys.insert_mode = {
 	[ "<Left>"] = "<NOP>",
 	[ "<Right>"] = "<NOP>",
 
+  ["<C-j>"] = "<esc>o",
+  ["<C-k>"] = "<esc>O",
+
   ["<A-p>"] = "<C-o>:IPythonCellInsertAbove<CR>",
   ["<A-n>"] = "<C-o>:IPythonCellInsertBelow<CR>",
 }
@@ -211,6 +214,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.context_commentstring.enable = true
 lvim.builtin.treesitter.autotag.enable = true
+lvim.builtin.treesitter.autotag.filetypes = { "html", "htmldjango", "xml"}
 
 -- *
 -- Whichkey
@@ -555,6 +559,7 @@ lvim.plugins = {
     {
       "windwp/nvim-ts-autotag",
       event = "InsertEnter",
+      ft = { 'html', 'htmldjango', 'xml' }
     },
     {
       "liuchengxu/vista.vim"
@@ -570,10 +575,9 @@ lvim.plugins = {
       "hanschen/vim-ipython-cell",
       ft = 'python'
     },
-    {
-      "AndrewRadev/tagalong.vim",
-      ft = 'html'
-    }
+    -- {
+    --   "tweekmonster/django-plus.vim",
+    -- }
   }
 
   -- generic LSP settings
