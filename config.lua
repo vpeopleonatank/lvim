@@ -154,6 +154,20 @@ local get_telescope_mappings = function()
 		},
 	}
 end
+
+lvim.builtin.telescope.extensions = {
+  fzf = {
+    fuzzy = true, -- false will only do exact matching
+    override_generic_sorter = true, -- override the generic sorter
+    override_file_sorter = true, -- override the file sorter
+    case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+    -- the default case_mode is "smart_case"
+  },
+}
+lvim.builtin.telescope.on_config_done = function()
+  require("telescope").load_extension "fzf"
+end
+
 lvim.builtin.telescope.defaults.mappings = get_telescope_mappings()
 
 -- *
@@ -187,6 +201,7 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.context_commentstring.enable = true
+lvim.builtin.treesitter.autotag.enable = true
 
 -- *
 -- Whichkey
@@ -199,6 +214,10 @@ lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
 -- lvim.builtin.which_key.mappings["e"] = { "<cmd>lua require('lir.float').toggle()<cr>", "Files" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
 lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
+
+lvim.builtin.which_key.mappings.l.o = { "<cmd>Vista<cr>", "Vista" }
+lvim.builtin.which_key.mappings.l.R = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
+
 lvim.builtin.which_key.mappings["s"]["f"] = {
 	"<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>",
 	"Find File",
@@ -224,6 +243,13 @@ lvim.builtin.which_key.mappings["x"] = {
 	d = { "<cmd>Trouble lsp_document_diagnostics<CR>", "Trouble Document" },
 	l = { "<cmd>Trouble loclist<CR>", "Trouble Location List" },
 	q = { "<cmd>Trouble quickfix<CR>", "Trouble Quickfix List" },
+}
+
+lvim.builtin.which_key.mappings["r"] = {
+  name = "Replace",
+  r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+  w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+  f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
 
 -- *
@@ -487,11 +513,12 @@ lvim.plugins = {
     {
       "mattn/emmet-vim"
     },
-    {
-      "nvim-telescope/telescope-fzy-native.nvim",
-      run = "make",
-      event = "BufRead",
-    },
+    -- {
+    --   "nvim-telescope/telescope-fzy-native.nvim",
+    --   run = "make",
+    --   event = "BufRead",
+    -- },
+   { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     {
       "ray-x/lsp_signature.nvim",
       event = "InsertEnter",
@@ -505,6 +532,13 @@ lvim.plugins = {
       config = function()
         require("user.spectre").config()
       end,
+    },
+    {
+      "windwp/nvim-ts-autotag",
+      event = "InsertEnter",
+    },
+    {
+      "liuchengxu/vista.vim"
     },
   }
 
