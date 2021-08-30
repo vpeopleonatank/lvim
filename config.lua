@@ -192,7 +192,7 @@ lvim.builtin.treesitter.context_commentstring.enable = true
 -- Whichkey
 -- *
 lvim.builtin.which_key.active = true
-lvim.builtin.which_key.mappings["w"] = { "<cmd>w<CR>", "Save" }
+-- lvim.builtin.which_key.mappings["w"] = { "<cmd>w<CR>", "Save" }
 lvim.builtin.which_key.mappings["W"] = { "<cmd>w!<CR>", "Force Save" }
 lvim.builtin.which_key.mappings["q"] = { "<cmd>q<CR>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
@@ -205,6 +205,9 @@ lvim.builtin.which_key.mappings["s"]["f"] = {
 }
 lvim.builtin.which_key.mappings["s"]["m"] = { "<cmd>Telescope marks<cr>", "Search Marks" }
 lvim.builtin.which_key.mappings["s"]["g"] = { "<cmd>Telescope git_files<cr>", "Search Git Files" }
+
+lvim.builtin.which_key.mappings["w"]["s"] = { ":SaveSession<cr>", "Save session" }
+lvim.builtin.which_key.mappings["w"]["l"] = { ":RestoreSession<cr>", "Restore session" }
 lvim.builtin.which_key.mappings["t"] = {
 	name = "Toggle",
 	h = { "<cmd>set hlsearch!<CR>", "Toggle Highlight" },
@@ -363,7 +366,7 @@ lvim.plugins = {
       require("indent_blankline").setup({
         char = "▏",
         space_char_blankline = " ",
-        filetype_exclude = { "dashboard" },
+        filetype_exclude = { "dashboard", "Trouble", "NvimTree", "neogitstastus" },
         show_trailing_blankline_indent = false,
         buftype_exclude = { "help", "terminal", "nofile" },
       })
@@ -465,8 +468,8 @@ lvim.plugins = {
         auto_session_enable_last_session = false,
         auto_session_root_dir = vim.fn.stdpath('data').."/sessions/",
         -- auto_session_enabled = true,
-        auto_save_enabled = true,
-        auto_restore_enabled = true,
+        auto_save_enabled = false,
+        auto_restore_enabled = false,
         -- auto_session_suppress_dirs = nil,
         -- pre_save_cmds = {"NvimTreeClose"},
         -- post_restore_cmds = {"NvimTreeRefresh"}
@@ -483,7 +486,26 @@ lvim.plugins = {
     },
     {
       "mattn/emmet-vim"
-    }
+    },
+    {
+      "nvim-telescope/telescope-fzy-native.nvim",
+      run = "make",
+      event = "BufRead",
+    },
+    {
+      "ray-x/lsp_signature.nvim",
+      event = "InsertEnter",
+      config = function()
+        require("user.lsp_signature").config()
+      end,
+    },
+    {
+      "windwp/nvim-spectre",
+      event = "BufRead",
+      config = function()
+        require("user.spectre").config()
+      end,
+    },
   }
 
   -- generic LSP settings
@@ -511,21 +533,6 @@ lvim.plugins = {
 --     return require("lspconfig/util").root_pattern("Makefile", ".git")(fname) or require("lspconfig/util").path.dirname(fname)
 --   end
 -- end
-
--- set a formatter if you want to override the default lsp one (if it exists)
--- lvim.lang.python.formatters = {
---   {
---     exe = "black",
---     args = {}
---   }
--- }
--- set an additional linter
--- lvim.lang.python.linters = {
---   {
---     exe = "flake8",
---     args = {}
---   }
--- }
 
 -- Additional Plugins
 -- lvim.plugins = {
