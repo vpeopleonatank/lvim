@@ -17,7 +17,7 @@ an executable
 local init_custom_options = function()
 	local custom_options = {
 		relativenumber = true, -- Set relative numbered lines
-		colorcolumn = "120", -- Indent line at what column? Set something like '99999' to not display it
+		colorcolumn = "80", -- Indent line at what column? Set something like '99999' to not display it
 		scrolloff = 5, -- Determines the number of context lines you would like to see above and below the cursor
 		ignorecase = true, -- Ignore case in search
 		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.  timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
@@ -50,7 +50,7 @@ lvim.keys.normal_mode = {
 	-- Alternative way to save
 	[ "<C-s>"] = ":w<CR>",
 
-  ["<esc><esc>"] = "<cmd>nohlsearch<cr>",
+  ["<A-'>"] = ":nohlsearch<cr>",
 
 	-- Better window movement
 	["<C-h>"] = "<C-w>h",
@@ -180,6 +180,7 @@ lvim.builtin.nvimtree.active = false
 -- Treesitter
 -- *
 lvim.builtin.treesitter.ensure_installed = "maintained"
+-- lvim.builtin.treesitter.indent.enable = false
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.matchup.enable = true
@@ -312,7 +313,6 @@ lvim.plugins = {
 						signcolumn = "no", -- disable signcolumn
 						number = false, -- disable number column
 						relativenumber = false, -- disable relative numbers
-						-- cursorline = false, -- disable cursorline
 						-- cursorcolumn = false, -- disable cursor column
 						-- foldcolumn = "0", -- disable fold column
 						-- list = false, -- disable whitespace characters
@@ -356,18 +356,15 @@ lvim.plugins = {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		setup = function()
-			-- vim.g.indentLine_enabled = 1
-			-- vim.g.indent_blankline_char = "‚ñè"
-			vim.g.indent_blankline_filetype_exclude = {
-				"help",
-				"terminal",
-				"dashboard",
-			}
-			vim.g.indent_blankline_buftype_exclude = { "terminal" }
-			vim.g.indent_blankline_show_trailing_blankline_indent = false
-			vim.g.indent_blankline_show_first_indent_level = false
-		end,
+    event = "BufRead",
+    setup = function()
+      vim.g.indentLine_enabled = 1
+      vim.g.indent_blankline_char = "▏"
+      vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+      vim.g.indent_blankline_buftype_exclude = {"terminal"}
+      vim.g.indent_blankline_show_trailing_blankline_indent = false
+      vim.g.indent_blankline_show_first_indent_level = false
+    end
 	},
 	-- {
 	-- 	"projekt0n/github-nvim-theme",
@@ -447,6 +444,9 @@ lvim.plugins = {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     ft = "markdown",
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end,
   },
   {
     "sindrets/diffview.nvim",
