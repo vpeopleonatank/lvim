@@ -215,7 +215,7 @@ lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
 lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
 
-lvim.builtin.which_key.mappings.l.o = { "<cmd>Vista<cr>", "Vista" }
+lvim.builtin.which_key.mappings.o = { "<cmd>Vista<cr>", "Vista" }
 lvim.builtin.which_key.mappings.l.R = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
 
 lvim.builtin.which_key.mappings["s"]["f"] = {
