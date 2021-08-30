@@ -41,6 +41,9 @@ lvim.keys.insert_mode = {
 	[ "<Down>"] = "<NOP>",
 	[ "<Left>"] = "<NOP>",
 	[ "<Right>"] = "<NOP>",
+
+  ["<A-p>"] = "<C-o>:IPythonCellInsertAbove<CR>",
+  ["<A-n>"] = "<C-o>:IPythonCellInsertBelow<CR>",
 }
 
 lvim.keys.normal_mode = {
@@ -50,7 +53,12 @@ lvim.keys.normal_mode = {
 	-- Alternative way to save
 	[ "<C-s>"] = ":w<CR>",
 
-  ["<A-'>"] = ":nohlsearch<cr>",
+  -- Navigate IPython Cell
+  ["[c"] = ":IPythonCellPrevCell<CR>",
+  ["]c"] = ":IPythonCellNextCell<CR>",
+
+  ["<A-p>"] = ":IPythonCellInsertAbove<CR>a",
+  ["<A-n>"] = ":IPythonCellInsertBelow<CR>a",
 
 	-- Better window movement
 	["<C-h>"] = "<C-w>h",
@@ -207,7 +215,17 @@ lvim.builtin.treesitter.autotag.enable = true
 -- Whichkey
 -- *
 lvim.builtin.which_key.active = true
--- lvim.builtin.which_key.mappings["w"] = { "<cmd>w<CR>", "Save" }
+lvim.builtin.which_key.mappings["a"] = {
+  name = "IPython",
+  s = { "<cmd>SlimeSend1 ipython<CR>", "Start Ipython" },
+  r = { "<cmd>IPythonCellRun<CR>", "Run file" },
+  R = { "<cmd>IPythonCellRunTime<CR>", "Run file with time" },
+  c = { "<cmd>IPythonCellExecuteCell<CR>", "Execute cell" },
+  C = { "<cmd>IPythonCellExecuteCellJump<CR>", "Execute cell and jump" },
+  l = { "<cmd>IPythonCellClear<CR>", "Clear cell" },
+  q = { "<cmd>SlimeSend1 exit<CR>", "Exit IPython" },
+  Q = { "<cmd>IPythonCellRestart<CR>", "Restart IPython" }
+}
 lvim.builtin.which_key.mappings["W"] = { "<cmd>w!<CR>", "Force Save" }
 lvim.builtin.which_key.mappings["q"] = { "<cmd>q<CR>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { "<cmd>q!<CR>", "Force Quit" }
@@ -216,7 +234,6 @@ lvim.builtin.which_key.mappings["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>"
 lvim.builtin.which_key.mappings["b"]["c"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer" }
 
 lvim.builtin.which_key.mappings.o = { "<cmd>Vista<cr>", "Vista" }
-lvim.builtin.which_key.mappings.l.R = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
 
 lvim.builtin.which_key.mappings["s"]["f"] = {
 	"<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>",
@@ -234,11 +251,12 @@ lvim.builtin.which_key.mappings["t"] = {
 	b = { "<cmd>GitBlameToggle<CR>", "Toggle Git Blame" },
 	t = { "<cmd>Twilight<CR>", "Toggle Twilight" },
 	i = { "<cmd>IndentBlanklineToggle<CR>", "Toggle Indent Line" },
-	x = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
 }
 lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" }
 lvim.builtin.which_key.mappings["x"] = {
 	name = "Trouble",
+  r = { "<cmd>Trouble lsp_references<cr>", "References" },
+  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
 	w = { "<cmd>Trouble lsp_workspace_diagnostics<CR>", "Trouble Workspaces" },
 	d = { "<cmd>Trouble lsp_document_diagnostics<CR>", "Trouble Document" },
 	l = { "<cmd>Trouble loclist<CR>", "Trouble Location List" },
@@ -539,6 +557,17 @@ lvim.plugins = {
     },
     {
       "liuchengxu/vista.vim"
+    },
+    {
+      "jpalardy/vim-slime",
+      ft = 'python',
+      config = function ()
+        require("user.vim_slime").config()
+      end
+    },
+    {
+      "hanschen/vim-ipython-cell",
+      ft = 'python'
     },
   }
 
