@@ -21,6 +21,7 @@ local init_custom_options = function()
 		scrolloff = 5, -- Determines the number of context lines you would like to see above and below the cursor
 		ignorecase = true, -- Ignore case in search
 		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.  timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
+    smartindent = false
 	}
 
 	for k, v in pairs(custom_options) do
@@ -569,6 +570,10 @@ lvim.plugins = {
       "hanschen/vim-ipython-cell",
       ft = 'python'
     },
+    {
+      "AndrewRadev/tagalong.vim",
+      ft = 'html'
+    }
   }
 
   -- generic LSP settings
