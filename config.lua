@@ -518,6 +518,9 @@ lvim.plugins = {
   {
     "rmagatti/auto-session",
     config = function ()
+      lvim.autocommands.custom_groups = {
+        "VimLeave", "*", "NvimTreeClose",
+      }
       local opts = {
         log_level = 'info',
         auto_session_enable_last_session = false,
