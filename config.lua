@@ -31,6 +31,11 @@ end
 
 init_custom_options()
 
+-- vim.g.user_emmet_settings = {
+--   indent_blockelement = 1,
+--   user_emmet_leader_key = '<A-q>'
+-- }
+
 -- *
 -- Key mappings
 -- *
@@ -45,6 +50,7 @@ lvim.keys.insert_mode = {
 
   ["<C-j>"] = "<esc>o",
   ["<C-k>"] = "<esc>O",
+  ["<C-l>"] = "<CR><ESC>O",
 
   ["<A-p>"] = "<C-o>:IPythonCellInsertAbove<CR>",
   ["<A-n>"] = "<C-o>:IPythonCellInsertBelow<CR>",
@@ -520,7 +526,7 @@ lvim.plugins = {
         auto_save_enabled = false,
         auto_restore_enabled = false,
         -- auto_session_suppress_dirs = nil,
-        -- pre_save_cmds = {"NvimTreeClose"},
+        pre_save_cmds = {"NvimTreeToggle"},
         -- post_restore_cmds = {"NvimTreeRefresh"}
       }
 
@@ -534,7 +540,14 @@ lvim.plugins = {
       end,
     },
     {
-      "mattn/emmet-vim"
+      "mattn/emmet-vim",
+      setup = function ()
+
+        vim.g.user_emmet_leader_key = '<c-y>'
+        vim.g.user_emmet_settings = {
+          indent_blockelement = 1,
+        }
+      end
     },
     -- {
     --   "nvim-telescope/telescope-fzy-native.nvim",
