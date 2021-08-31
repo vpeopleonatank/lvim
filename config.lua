@@ -526,7 +526,7 @@ lvim.plugins = {
         auto_save_enabled = false,
         auto_restore_enabled = false,
         -- auto_session_suppress_dirs = nil,
-        pre_save_cmds = {"NvimTreeToggle"},
+        pre_save_cmds = {"NvimTreeClose"},
         -- post_restore_cmds = {"NvimTreeRefresh"}
       }
 
