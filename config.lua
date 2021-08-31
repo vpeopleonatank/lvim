@@ -572,6 +572,12 @@ lvim.plugins = {
     {
       "windwp/nvim-ts-autotag",
       event = "InsertEnter",
+      config = function ()
+        -- require('nvim-ts-autotag').setup({
+        --   -- currently disable for htmldjango due to incompatible
+        --   filetypes = { "html" , "xml" },
+        -- })
+      end,
       ft = { 'html', 'htmldjango', 'xml' }
     },
     {
