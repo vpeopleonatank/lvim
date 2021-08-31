@@ -140,7 +140,7 @@ lvim.keys.visual_block_mode = {
 -- *
 -- Format
 -- *
-lvim.format_on_save = true
+lvim.format_on_save = false
 
 -- *
 -- Linting
