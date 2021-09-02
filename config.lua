@@ -597,6 +597,9 @@ lvim.plugins = {
       "hanschen/vim-ipython-cell",
       ft = 'python'
     },
+    {
+      "mg979/vim-visual-multi"
+    }
     -- {
     --   "tweekmonster/django-plus.vim",
     -- }
