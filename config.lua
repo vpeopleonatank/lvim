@@ -599,7 +599,16 @@ lvim.plugins = {
     },
     {
       "mg979/vim-visual-multi"
-    }
+    },
+    -- {
+    --   "sotte/presenting.vim"
+    -- },
+    -- {
+    --   "vim-pandoc/vim-pandoc",
+    --   config = function ()
+    --       -- vim.g.pandoc[filetypes]
+    --   end
+    -- }
     -- {
     --   "tweekmonster/django-plus.vim",
     -- }
