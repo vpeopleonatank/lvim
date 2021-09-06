@@ -588,7 +588,7 @@ lvim.plugins = {
     },
     {
       "jpalardy/vim-slime",
-      ft = 'python',
+      ft = { 'python', 'javascript' },
       config = function ()
         require("user.vim_slime").config()
       end
