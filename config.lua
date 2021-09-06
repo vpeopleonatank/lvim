@@ -114,10 +114,10 @@ lvim.keys.normal_mode = {
 
 lvim.keys.term_mode = {
 	-- Terminal window navigation
-	[ "<C-h>"] = "<C-\\><C-N><C-w>h",
-	[ "<C-j>"] = "<C-\\><C-N><C-w>j",
-	[ "<C-k>"] = "<C-\\><C-N><C-w>k",
-	[ "<C-l>"] = "<C-\\><C-N><C-w>l",
+	[ "<C-left>"] = "<C-\\><C-N><C-w>h",
+	[ "<C-down>"] = "<C-\\><C-N><C-w>j",
+	[ "<C-up>"] = "<C-\\><C-N><C-w>k",
+	[ "<C-right>"] = "<C-\\><C-N><C-w>l",
 }
 -- 
 -- lvim.keys.visual_mode = {
@@ -612,6 +612,22 @@ lvim.plugins = {
     -- {
     --   "tweekmonster/django-plus.vim",
     -- }
+--     {
+--       "ibhagwan/fzf-lua",
+--       requires = {
+--         "vijaymarupudi/nvim-fzf",
+--         "kyazdani42/nvim-web-devicons"
+--       },
+--       config = function ()
+--         vim.api.nvim_set_keymap('n', '<c-P>',
+--             "<cmd>lua require('fzf-lua').files()<CR>",
+--             { noremap = true, silent = true })
+-- 
+--         vim.api.nvim_set_keymap('n', '<c-[>',
+--             "<cmd>lua require('fzf-lua').live_grep()<CR>",
+--             { noremap = true, silent = true })
+--       end
+--     }
   }
 
   -- generic LSP settings
