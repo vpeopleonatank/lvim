@@ -603,12 +603,12 @@ lvim.plugins = {
     -- {
     --   "sotte/presenting.vim"
     -- },
-    -- {
-    --   "vim-pandoc/vim-pandoc",
-    --   config = function ()
-    --       -- vim.g.pandoc[filetypes]
-    --   end
-    -- }
+    {
+      "vim-pandoc/vim-pandoc",
+      config = function ()
+          -- vim.g.pandoc[filetypes]
+      end
+    }
     -- {
     --   "tweekmonster/django-plus.vim",
     -- }
