@@ -40,6 +40,16 @@ init_custom_options()
 -- Key mappings
 -- *
 lvim.leader = "space"
+-- lvim.builtin.cmp.sources = {
+--   { name = 'tmux',
+--     opts = {
+--       all_panes = false,
+--       label = '[tmux]',
+--       trigger_characters = { '.' },
+--       trigger_characters_ft = {} -- { filetype = { '.' } }
+--     }
+--   }
+-- }
 
 lvim.keys.insert_mode = {
 	-- Disable arrow keys
@@ -262,6 +272,7 @@ lvim.builtin.which_key.mappings["t"] = {
 	b = { "<cmd>GitBlameToggle<CR>", "Toggle Git Blame" },
 	t = { "<cmd>Twilight<CR>", "Toggle Twilight" },
 	i = { "<cmd>IndentBlanklineToggle<CR>", "Toggle Indent Line" },
+	l = { "<cmd>ToggleDiag<CR>", "Toggle Lsp Diagnostics" },
 }
 lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" }
 lvim.builtin.which_key.mappings["x"] = {
@@ -608,7 +619,14 @@ lvim.plugins = {
       config = function ()
           -- vim.g.pandoc[filetypes]
       end
-    }
+    },
+    {
+      "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+    },
+    -- {
+    --   'andersevenrud/compe-tmux',
+    --   branch = 'cmp',
+    -- }
     -- {
     --   "tweekmonster/django-plus.vim",
     -- }
