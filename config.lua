@@ -561,7 +561,8 @@ lvim.plugins = {
         vim.g.user_emmet_settings = {
           indent_blockelement = 1,
         }
-      end
+      end,
+      ft = {"html", "htmldjango"},
     },
     -- {
     --   "nvim-telescope/telescope-fzy-native.nvim",
