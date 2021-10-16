@@ -569,7 +569,7 @@ lvim.plugins = {
     --   run = "make",
     --   event = "BufRead",
     -- },
-   { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+   -- { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     {
       "ray-x/lsp_signature.nvim",
       event = "InsertEnter",
