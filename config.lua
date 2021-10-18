@@ -332,7 +332,7 @@ lvim.lang.python.linters = { { exe = "flake8" } }
 lvim.lang.javascript.formatters = { { exe = "prettier" } }
 lvim.lang.javascriptreact.formatters = lvim.lang.javascript.formatters
 
-lvim.lang.javascript.linters = { { exe = "eslint" } }
+lvim.lang.javascript.linters = { { exe = "eslint_d" } }
 lvim.lang.javascriptreact.linters = lvim.lang.javascript.linters
 
 -- typescript
@@ -432,7 +432,7 @@ lvim.plugins = {
       require("indent_blankline").setup({
         char = "▏",
         space_char_blankline = " ",
-        filetype_exclude = { "dashboard", "Trouble", "NvimTree", "neogitstastus" },
+        filetype_exclude = { "dashboard", "Trouble", "neogitstastus" },
         show_trailing_blankline_indent = false,
         buftype_exclude = { "help", "terminal", "nofile" },
       })
@@ -513,6 +513,37 @@ lvim.plugins = {
   {
     "kevinhwang91/nvim-bqf",
     event = "BufRead",
+    config = function ()
+      require("bqf").setup({
+
+        auto_enable = true,
+        preview = {
+          win_height = 12,
+          win_vheight = 12,
+          delay_syntax = 80,
+          border_chars = {'┃', '┃', '━', '━', '┏', '┓', '┗', '┛', '█'}
+        },
+        func_map = {
+          vsplit = '',
+          ptogglemode = 'z,',
+          stoggleup = ''
+        },
+        filter = {
+          fzf = {
+            action_for = {['ctrl-s'] = 'split'},
+            extra_opts = {'--bind', 'ctrl-o:toggle-all', '--prompt', '> '}
+          }
+        }
+      })
+
+      vim.cmd "hi BqfPreviewBorder guifg=#50a14f ctermfg=71"
+      vim.cmd "hi link BqfPreviewRange Search"
+      vim.cmd "hi default link BqfPreviewFloat Normal"
+      vim.cmd "hi default link BqfPreviewBorder Normal"
+      vim.cmd "hi default link BqfPreviewCursor Cursor"
+      vim.cmd "hi default link BqfPreviewRange IncSearch"
+      vim.cmd "hi default BqfSign ctermfg=14 guifg=Cyan"
+    end
   },
   {
     "iamcco/markdown-preview.nvim",
