@@ -230,7 +230,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.context_commentstring.enable = true
 lvim.builtin.treesitter.autotag.enable = true
-lvim.builtin.treesitter.autotag.filetypes = { "html", "htmldjango", "xml"}
+lvim.builtin.treesitter.autotag.filetypes = { "html", "htmldjango", "xml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"}
 
 -- *
 -- Whichkey
@@ -339,7 +339,7 @@ lvim.lang.javascriptreact.linters = lvim.lang.javascript.linters
 lvim.lang.typescript.formatters = { { exe = "prettier" } }
 lvim.lang.typescriptreact.formatters = lvim.lang.typescript.formatters
 
-lvim.lang.typescript.linters = { { exe = "eslint" } }
+lvim.lang.typescript.linters = { { exe = "eslint_d" } }
 lvim.lang.typescriptreact.linters = lvim.lang.typescript.linters
 
 -- *
@@ -435,6 +435,7 @@ lvim.plugins = {
         filetype_exclude = { "dashboard", "Trouble", "neogitstastus" },
         show_trailing_blankline_indent = false,
         buftype_exclude = { "help", "terminal", "nofile" },
+        char_highlight_list = {'Method', 'Function', 'Conditional', 'Special', 'Underlined'}
       })
 
       vim.cmd("highlight IndentBlanklineChar guifg=#666B70 gui=nocombine")
@@ -623,6 +624,8 @@ lvim.plugins = {
         --   -- currently disable for htmldjango due to incompatible
         --   filetypes = { "html" , "xml" },
         -- })
+
+        require('nvim-ts-autotag').setup()
       end,
       ft = { 'html', 'htmldjango', 'xml' }
     },
