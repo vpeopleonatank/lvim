@@ -319,7 +319,7 @@ lvim.lang.cpp.formatters = lvim.lang.c.formatters
 -- json
 lvim.lang.json.formatters = {
   {
-    exe = "prettier",
+    exe = "prettierd",
   },
 }
 
@@ -329,14 +329,14 @@ lvim.lang.python.formatters = { { exe = "black" } }
 lvim.lang.python.linters = { { exe = "flake8" } }
 
 -- javascript
-lvim.lang.javascript.formatters = { { exe = "prettier" } }
+lvim.lang.javascript.formatters = { { exe = "prettierd" } }
 lvim.lang.javascriptreact.formatters = lvim.lang.javascript.formatters
 
 lvim.lang.javascript.linters = { { exe = "eslint_d" } }
 lvim.lang.javascriptreact.linters = lvim.lang.javascript.linters
 
 -- typescript
-lvim.lang.typescript.formatters = { { exe = "prettier" } }
+lvim.lang.typescript.formatters = { { exe = "prettierd" } }
 lvim.lang.typescriptreact.formatters = lvim.lang.typescript.formatters
 
 lvim.lang.typescript.linters = { { exe = "eslint_d" } }
