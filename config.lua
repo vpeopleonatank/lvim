@@ -299,7 +299,6 @@ lvim.builtin.which_key.mappings["r"] = {
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
-<<<<<<< HEAD
     exe = "clang_format",
     filetypes = { "c", "cpp" },
   },
@@ -323,31 +322,6 @@ linters.setup {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
   },
 }
-=======
-    exe = "prettierd",
-  },
-}
-
--- python
-lvim.lang.python.formatters = { { exe = "black" } }
-
-lvim.lang.python.linters = { { exe = "flake8" } }
-
--- javascript
-lvim.lang.javascript.formatters = { { exe = "prettierd" } }
-lvim.lang.javascriptreact.formatters = lvim.lang.javascript.formatters
-
-lvim.lang.javascript.linters = { { exe = "eslint_d" } }
-lvim.lang.javascriptreact.linters = lvim.lang.javascript.linters
-
--- typescript
-lvim.lang.typescript.formatters = { { exe = "prettierd" } }
-lvim.lang.typescriptreact.formatters = lvim.lang.typescript.formatters
-
-lvim.lang.typescript.linters = { { exe = "eslint_d" } }
-lvim.lang.typescriptreact.linters = lvim.lang.typescript.linters
-
->>>>>>> d1af23c60b547a32f2e2aca7f7eb5ca1efa49717
 -- *
 -- Additional Plugins
 -- *
