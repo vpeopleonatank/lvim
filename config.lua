@@ -1,19 +1,3 @@
---[[
-lvim is the global options object
-
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
--- *
--- Settings
--- *
--- *
--- Settings
--- *
 local init_custom_options = function()
 	local custom_options = {
 		relativenumber = true, -- Set relative numbered lines
@@ -312,36 +296,32 @@ lvim.builtin.which_key.mappings["r"] = {
 -- lvim.lang.go.formatter.exe = "goimports"
 
 -- c/c++
-
-lvim.lang.c.formatters = { { exe = "clang_format" } }
-lvim.lang.cpp.formatters = lvim.lang.c.formatters
-
--- json
-lvim.lang.json.formatters = {
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
   {
-    exe = "prettier",
+    exe = "clang_format",
+    filetypes = { "c", "cpp" },
+  },
+  {
+    exe = "prettierd",
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" }
+  },
+  {
+    exe = "black",
+    filetypes = { "python" },
   },
 }
 
--- python
-lvim.lang.python.formatters = { { exe = "black" } }
-
-lvim.lang.python.linters = { { exe = "flake8" } }
-
--- javascript
-lvim.lang.javascript.formatters = { { exe = "prettier" } }
-lvim.lang.javascriptreact.formatters = lvim.lang.javascript.formatters
-
-lvim.lang.javascript.linters = { { exe = "eslint_d" } }
-lvim.lang.javascriptreact.linters = lvim.lang.javascript.linters
-
--- typescript
-lvim.lang.typescript.formatters = { { exe = "prettier" } }
-lvim.lang.typescriptreact.formatters = lvim.lang.typescript.formatters
-
-lvim.lang.typescript.linters = { { exe = "eslint_d" } }
-lvim.lang.typescriptreact.linters = lvim.lang.typescript.linters
-
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  {
+    exe = "flake8", filetypes = { "python" },
+  },
+  {
+    exe = "eslint_d",
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  },
+}
 -- *
 -- Additional Plugins
 -- *
@@ -464,7 +444,7 @@ lvim.plugins = {
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
 	},
-	{ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" },
+	-- { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" },
 	{
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -682,43 +662,3 @@ lvim.plugins = {
 --       end
 --     }
   }
-
-  -- generic LSP settings
--- you can set a custom on_attach function that will be used for all the language servers
--- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
--- lvim.lsp.on_attach_callback = function(client, bufnr)
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---   --Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- end
--- you can overwrite the null_ls setup table (useful for setting the root_dir function)
--- lvim.lsp.null_ls.setup = {
---   root_dir = require("lspconfig").util.root_pattern("Makefile", ".git", "node_modules"),
--- }
--- or if you need something more advanced
--- lvim.lsp.null_ls.setup.root_dir = function(fname)
---   if vim.bo.filetype == "javascript" then
---     return require("lspconfig/util").root_pattern("Makefile", ".git", "node_modules")(fname)
---       or require("lspconfig/util").path.dirname(fname)
---   elseif vim.bo.filetype == "php" then
---     return require("lspconfig/util").root_pattern("Makefile", ".git", "composer.json")(fname) or vim.fn.getcwd()
---   else
---     return require("lspconfig/util").root_pattern("Makefile", ".git")(fname) or require("lspconfig/util").path.dirname(fname)
---   end
--- end
-
--- Additional Plugins
--- lvim.plugins = {
---     {"folke/tokyonight.nvim"}, {
---         "ray-x/lsp_signature.nvim",
---         config = function() require"lsp_signature".on_attach() end,
---         event = "InsertEnter"
---     }
--- }
-
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
---   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
