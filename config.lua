@@ -276,26 +276,6 @@ lvim.builtin.which_key.mappings["r"] = {
   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
 
--- *
--- LSP
--- *
--- generic LSP settings
--- you can set a custom on_attach function that will be used for all the language servers
--- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
--- lvim.lsp.on_attach_callback = function(client, bufnr)
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---   --Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- end
-
--- *
--- Lang
--- *
--- lvim.lang.go.formatter.exe = "goimports"
-
--- c/c++
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
@@ -421,22 +401,6 @@ lvim.plugins = {
       vim.cmd("highlight IndentBlanklineChar guifg=#666B70 gui=nocombine")
     end
 	},
-	-- {
-	-- 	"projekt0n/github-nvim-theme",
-	-- 	config = function()
-	-- 		require("github-theme").setup({
-	-- 			themeStyle = "dimmed",
-	-- 			commentStyle = "NONE",
-	-- 			keywordStyle = "NONE",
-	-- 			functionStyle = "NONE",
-	-- 			variableStyle = "NONE",
-	-- 			sidebars = { "qf", "vista_kind", "terminal", "packer" },
-	-- 		})
-	-- 		vim.cmd([[
-	-- 		colorscheme "github-theme"
-	-- 		]])
-	-- 	end,
-	-- },
 	{
 		"andymass/vim-matchup",
 		event = "CursorMoved",
