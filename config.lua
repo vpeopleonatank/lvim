@@ -46,8 +46,6 @@ lvim.keys.insert_mode = {
 	["<C-k>"] = "<esc>O",
 	["<C-l>"] = "<CR><ESC>O",
 
-	["<A-p>"] = "<C-o>:IPythonCellInsertAbove<CR>",
-	["<A-n>"] = "<C-o>:IPythonCellInsertBelow<CR>",
 }
 
 lvim.keys.normal_mode = {
@@ -56,13 +54,6 @@ lvim.keys.normal_mode = {
 	["Q"] = "<NOP>",
 	-- Alternative way to save
 	["<C-s>"] = ":w<CR>",
-
-	-- Navigate IPython Cell
-	["[c"] = ":IPythonCellPrevCell<CR>",
-	["]c"] = ":IPythonCellNextCell<CR>",
-
-	["<A-p>"] = ":IPythonCellInsertAbove<CR>a",
-	["<A-n>"] = ":IPythonCellInsertBelow<CR>a",
 
 	-- Better window movement
 	["<C-h>"] = "<C-w>h",
@@ -527,7 +518,7 @@ lvim.plugins = {
 					listing_style = "tree", -- One of 'list' or 'tree'
 					tree_options = { -- Only applies when listing_style is 'tree'
 						flatten_dirs = true,
-						folder_statuses = "always",  -- One of 'never', 'only_folded' or 'always'.
+						folder_statuses = "always", -- One of 'never', 'only_folded' or 'always'.
 					},
 				},
 				file_history_panel = {
@@ -679,6 +670,15 @@ lvim.plugins = {
 	},
 	{
 		"hanschen/vim-ipython-cell",
+		config = function()
+			vim.api.nvim_set_keymap("n", "[c", ":IPythonCellPrevCell<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "]c", ":IPythonCellNextCell<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<A-p>", ":IPythonCellInsertAbove<CR>a", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<A-n>", ":IPythonCellInsertBelow<CR>a", { noremap = true, silent = true })
+
+			vim.api.nvim_set_keymap("n", "<A-p>", "<C-o>:IPythonCellInsertAbove<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<A-n>", "<C-o>:IPythonCellInsertBelow<CR>", { noremap = true, silent = true })
+		end,
 		ft = "python",
 	},
 	{
