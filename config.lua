@@ -5,7 +5,7 @@ local init_custom_options = function()
 		scrolloff = 5, -- Determines the number of context lines you would like to see above and below the cursor
 		ignorecase = true, -- Ignore case in search
 		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.  timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
-    smartindent = false
+		smartindent = false,
 	}
 
 	for k, v in pairs(custom_options) do
@@ -37,32 +37,32 @@ lvim.leader = "space"
 
 lvim.keys.insert_mode = {
 	-- Disable arrow keys
-	[ "<Up>"] = "<NOP>",
-	[ "<Down>"] = "<NOP>",
-	[ "<Left>"] = "<NOP>",
-	[ "<Right>"] = "<NOP>",
+	["<Up>"] = "<NOP>",
+	["<Down>"] = "<NOP>",
+	["<Left>"] = "<NOP>",
+	["<Right>"] = "<NOP>",
 
-  ["<C-j>"] = "<esc>o",
-  ["<C-k>"] = "<esc>O",
-  ["<C-l>"] = "<CR><ESC>O",
+	["<C-j>"] = "<esc>o",
+	["<C-k>"] = "<esc>O",
+	["<C-l>"] = "<CR><ESC>O",
 
-  ["<A-p>"] = "<C-o>:IPythonCellInsertAbove<CR>",
-  ["<A-n>"] = "<C-o>:IPythonCellInsertBelow<CR>",
+	["<A-p>"] = "<C-o>:IPythonCellInsertAbove<CR>",
+	["<A-n>"] = "<C-o>:IPythonCellInsertBelow<CR>",
 }
 
 lvim.keys.normal_mode = {
 	-- Disable Ex mode, beause what the fuck is that...
 
-  [ "Q"] = "<NOP>",
+	["Q"] = "<NOP>",
 	-- Alternative way to save
-	[ "<C-s>"] = ":w<CR>",
+	["<C-s>"] = ":w<CR>",
 
-  -- Navigate IPython Cell
-  ["[c"] = ":IPythonCellPrevCell<CR>",
-  ["]c"] = ":IPythonCellNextCell<CR>",
+	-- Navigate IPython Cell
+	["[c"] = ":IPythonCellPrevCell<CR>",
+	["]c"] = ":IPythonCellNextCell<CR>",
 
-  ["<A-p>"] = ":IPythonCellInsertAbove<CR>a",
-  ["<A-n>"] = ":IPythonCellInsertBelow<CR>a",
+	["<A-p>"] = ":IPythonCellInsertAbove<CR>a",
+	["<A-n>"] = ":IPythonCellInsertBelow<CR>a",
 
 	-- Better window movement
 	["<C-h>"] = "<C-w>h",
@@ -71,54 +71,54 @@ lvim.keys.normal_mode = {
 	["<C-l>"] = "<C-w>l",
 
 	-- Resize with arrows
-	[ "<Up>"] = ":resize +2<CR>",
-	[ "<Down>"] = ":resize -2<CR>",
-	[ "<Left>"] = ":vertical resize -2<CR>" ,
-	[ "<Right>"] = ":vertical resize +2<CR>" ,
+	["<Up>"] = ":resize +2<CR>",
+	["<Down>"] = ":resize -2<CR>",
+	["<Left>"] = ":vertical resize -2<CR>",
+	["<Right>"] = ":vertical resize +2<CR>",
 
 	-- QuickFix
-	["]q"] = ":cnext<CR>" ,
-	["[q"] = ":cprev<CR>" ,
+	["]q"] = ":cnext<CR>",
+	["[q"] = ":cprev<CR>",
 	["<C-q>"] = ":call QuickFixToggle()<CR>",
 
 	-- LSP/Trouble
 	["gR"] = "<cmd>Trouble lsp_references<CR>",
 
-  -- Barbar.nvim
-  ["`"] = ":BufferNext<CR>",
-  ["~"] = ":BufferPrevious<CR>",
-  ["<A-<>"] = ":BufferMovePrevious<CR>",
-  ["<A->>"] = ":BufferMoveNext<CR>",
+	-- Barbar.nvim
+	["`"] = ":BufferNext<CR>",
+	["~"] = ":BufferPrevious<CR>",
+	["<A-<>"] = ":BufferMovePrevious<CR>",
+	["<A->>"] = ":BufferMoveNext<CR>",
 
-  ["<leader>1"] = ":BufferGoto 1<CR>",
-  ["<leader>2"] = ":BufferGoto 2<CR>",
-  ["<leader>3"] = ":BufferGoto 3<CR>",
-  ["<leader>4"] = ":BufferGoto 4<CR>",
-  ["<leader>5"] = ":BufferGoto 5<CR>",
-  ["<leader>6"] = ":BufferGoto 6<CR>",
-  ["<leader>7"] = ":BufferGoto 7<CR>",
-  ["<leader>8"] = ":BufferGoto 8<CR>",
-  ["<leader>9"] = ":BufferGoto 9<CR>",
-  ["<leader>0"] = ":BufferGoto 0<CR>",
+	["<leader>1"] = ":BufferGoto 1<CR>",
+	["<leader>2"] = ":BufferGoto 2<CR>",
+	["<leader>3"] = ":BufferGoto 3<CR>",
+	["<leader>4"] = ":BufferGoto 4<CR>",
+	["<leader>5"] = ":BufferGoto 5<CR>",
+	["<leader>6"] = ":BufferGoto 6<CR>",
+	["<leader>7"] = ":BufferGoto 7<CR>",
+	["<leader>8"] = ":BufferGoto 8<CR>",
+	["<leader>9"] = ":BufferGoto 9<CR>",
+	["<leader>0"] = ":BufferGoto 0<CR>",
 
-  ["<A-q>"] = ":BufferClose<CR>",
-  ["<A-w>"] = ":BufferWipeout<CR>",
-  ["<A-b>"] = ":BufferCloseAllButCurrent<CR>",
+	["<A-q>"] = ":BufferClose<CR>",
+	["<A-w>"] = ":BufferWipeout<CR>",
+	["<A-b>"] = ":BufferCloseAllButCurrent<CR>",
 }
 
 lvim.keys.term_mode = {
 	-- Terminal window navigation
-	[ "<C-left>"] = "<C-\\><C-N><C-w>h",
-	[ "<C-down>"] = "<C-\\><C-N><C-w>j",
-	[ "<C-up>"] = "<C-\\><C-N><C-w>k",
-	[ "<C-right>"] = "<C-\\><C-N><C-w>l",
+	["<C-left>"] = "<C-\\><C-N><C-w>h",
+	["<C-down>"] = "<C-\\><C-N><C-w>j",
+	["<C-up>"] = "<C-\\><C-N><C-w>k",
+	["<C-right>"] = "<C-\\><C-N><C-w>l",
 }
--- 
+--
 -- lvim.keys.visual_mode = {
 -- 	-- Better indenting
 -- 	["<"] = "<gv",
 -- 	[">"] = ">gv",
--- 
+--
 -- 	-- Paste most recent yank
 -- 	["p"] = '"0p', { silent = true },
 -- 	["P"] = '"0P', { silent = true },
@@ -129,7 +129,6 @@ lvim.keys.visual_block_mode = {
 	["K"] = ":move '<-2<CR>gv-gv",
 	["J"] = ":move '>+1<CR>gv-gv",
 }
-
 
 -- *
 -- Format
@@ -168,16 +167,16 @@ local get_telescope_mappings = function()
 end
 
 lvim.builtin.telescope.extensions = {
-  fzf = {
-    fuzzy = true, -- false will only do exact matching
-    override_generic_sorter = true, -- override the generic sorter
-    override_file_sorter = true, -- override the file sorter
-    case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-    -- the default case_mode is "smart_case"
-  },
+	fzf = {
+		fuzzy = true, -- false will only do exact matching
+		override_generic_sorter = true, -- override the generic sorter
+		override_file_sorter = true, -- override the file sorter
+		case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+		-- the default case_mode is "smart_case"
+	},
 }
 lvim.builtin.telescope.on_config_done = function()
-  require("telescope").load_extension "fzf"
+	require("telescope").load_extension("fzf")
 end
 
 lvim.builtin.telescope.defaults.mappings = get_telescope_mappings()
@@ -207,29 +206,29 @@ lvim.builtin.nvimtree.hide_dotfiles = 0
 -- *
 -- Treesitter
 -- *
-lvim.builtin.treesitter.ensure_installed = "maintained"
-lvim.builtin.treesitter.indent.enable = false
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
-lvim.builtin.treesitter.matchup.enable = true
-lvim.builtin.treesitter.context_commentstring.enable = true
-lvim.builtin.treesitter.autotag.enable = true
-lvim.builtin.treesitter.autotag.filetypes = { "html", "htmldjango", "xml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"}
+-- lvim.builtin.treesitter.ensure_installed = "maintained"
+-- lvim.builtin.treesitter.indent.enable = false
+-- lvim.builtin.treesitter.ignore_install = { "haskell" }
+-- lvim.builtin.treesitter.highlight.enabled = true
+-- lvim.builtin.treesitter.matchup.enable = true
+-- lvim.builtin.treesitter.context_commentstring.enable = true
+-- lvim.builtin.treesitter.autotag.enable = true
+-- lvim.builtin.treesitter.autotag.filetypes = { "html", "htmldjango", "xml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"}
 
 -- *
 -- Whichkey
 -- *
 lvim.builtin.which_key.active = true
 lvim.builtin.which_key.mappings["a"] = {
-  name = "IPython",
-  s = { "<cmd>SlimeSend1 ipython<CR>", "Start Ipython" },
-  r = { "<cmd>IPythonCellRun<CR>", "Run file" },
-  R = { "<cmd>IPythonCellRunTime<CR>", "Run file with time" },
-  c = { "<cmd>IPythonCellExecuteCell<CR>", "Execute cell" },
-  C = { "<cmd>IPythonCellExecuteCellJump<CR>", "Execute cell and jump" },
-  l = { "<cmd>IPythonCellClear<CR>", "Clear cell" },
-  q = { "<cmd>SlimeSend1 exit<CR>", "Exit IPython" },
-  Q = { "<cmd>IPythonCellRestart<CR>", "Restart IPython" }
+	name = "IPython",
+	s = { "<cmd>SlimeSend1 ipython<CR>", "Start Ipython" },
+	r = { "<cmd>IPythonCellRun<CR>", "Run file" },
+	R = { "<cmd>IPythonCellRunTime<CR>", "Run file with time" },
+	c = { "<cmd>IPythonCellExecuteCell<CR>", "Execute cell" },
+	C = { "<cmd>IPythonCellExecuteCellJump<CR>", "Execute cell and jump" },
+	l = { "<cmd>IPythonCellClear<CR>", "Clear cell" },
+	q = { "<cmd>SlimeSend1 exit<CR>", "Exit IPython" },
+	Q = { "<cmd>IPythonCellRestart<CR>", "Restart IPython" },
 }
 lvim.builtin.which_key.mappings["W"] = { "<cmd>w!<CR>", "Force Save" }
 lvim.builtin.which_key.mappings["q"] = { "<cmd>q<CR>", "Quit" }
@@ -261,8 +260,8 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" }
 lvim.builtin.which_key.mappings["x"] = {
 	name = "Trouble",
-  r = { "<cmd>Trouble lsp_references<cr>", "References" },
-  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+	r = { "<cmd>Trouble lsp_references<cr>", "References" },
+	f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
 	w = { "<cmd>Trouble lsp_workspace_diagnostics<CR>", "Trouble Workspaces" },
 	d = { "<cmd>Trouble lsp_document_diagnostics<CR>", "Trouble Document" },
 	l = { "<cmd>Trouble loclist<CR>", "Trouble Location List" },
@@ -270,38 +269,43 @@ lvim.builtin.which_key.mappings["x"] = {
 }
 
 lvim.builtin.which_key.mappings["r"] = {
-  name = "Replace",
-  r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-  w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
-  f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+	name = "Replace",
+	r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+	w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+	f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
 
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  {
-    exe = "clang_format",
-    filetypes = { "c", "cpp" },
-  },
-  {
-    exe = "prettierd",
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" }
-  },
-  {
-    exe = "black",
-    filetypes = { "python" },
-  },
-}
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+	{
+		exe = "clang_format",
+		filetypes = { "c", "cpp" },
+	},
+	{
+		exe = "prettierd",
+		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+	},
+	{
+		exe = "black",
+		filetypes = { "python" },
+	},
+	{
+		exe = "stylua",
+		filetypes = { "lua" },
+	},
+})
 
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  {
-    exe = "flake8", filetypes = { "python" },
-  },
-  {
-    exe = "eslint_d",
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-  },
-}
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({
+	{
+		exe = "flake8",
+		filetypes = { "python" },
+	},
+	{
+		exe = "eslint_d",
+		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	},
+})
 -- *
 -- Additional Plugins
 -- *
@@ -387,19 +391,19 @@ lvim.plugins = {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    config = function()
-      require("indent_blankline").setup({
-        char = "▏",
-        space_char_blankline = " ",
-        filetype_exclude = { "dashboard", "Trouble", "neogitstastus" },
-        show_trailing_blankline_indent = false,
-        buftype_exclude = { "help", "terminal", "nofile" },
-        char_highlight_list = {'Method', 'Function', 'Conditional', 'Special', 'Underlined'}
-      })
+		event = "BufRead",
+		config = function()
+			require("indent_blankline").setup({
+				char = "▏",
+				space_char_blankline = " ",
+				filetype_exclude = { "dashboard", "Trouble", "neogitstastus" },
+				show_trailing_blankline_indent = false,
+				buftype_exclude = { "help", "terminal", "nofile" },
+				char_highlight_list = { "Method", "Function", "Conditional", "Special", "Underlined" },
+			})
 
-      vim.cmd("highlight IndentBlanklineChar guifg=#666B70 gui=nocombine")
-    end
+			vim.cmd("highlight IndentBlanklineChar guifg=#666B70 gui=nocombine")
+		end,
 	},
 	{
 		"andymass/vim-matchup",
@@ -455,174 +459,248 @@ lvim.plugins = {
 			require("colorizer").setup()
 		end,
 	},
-  {
-    "kevinhwang91/nvim-bqf",
-    event = "BufRead",
-    config = function ()
-      require("bqf").setup({
+	{
+		"kevinhwang91/nvim-bqf",
+		event = "BufRead",
+		config = function()
+			require("bqf").setup({
 
-        auto_enable = true,
-        preview = {
-          win_height = 12,
-          win_vheight = 12,
-          delay_syntax = 80,
-          border_chars = {'┃', '┃', '━', '━', '┏', '┓', '┗', '┛', '█'}
-        },
-        func_map = {
-          vsplit = '',
-          ptogglemode = 'z,',
-          stoggleup = ''
-        },
-        filter = {
-          fzf = {
-            action_for = {['ctrl-s'] = 'split'},
-            extra_opts = {'--bind', 'ctrl-o:toggle-all', '--prompt', '> '}
-          }
-        }
-      })
+				auto_enable = true,
+				preview = {
+					win_height = 12,
+					win_vheight = 12,
+					delay_syntax = 80,
+					border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+				},
+				func_map = {
+					vsplit = "",
+					ptogglemode = "z,",
+					stoggleup = "",
+				},
+				filter = {
+					fzf = {
+						action_for = { ["ctrl-s"] = "split" },
+						extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+					},
+				},
+			})
 
-      vim.cmd "hi BqfPreviewBorder guifg=#50a14f ctermfg=71"
-      vim.cmd "hi link BqfPreviewRange Search"
-      vim.cmd "hi default link BqfPreviewFloat Normal"
-      vim.cmd "hi default link BqfPreviewBorder Normal"
-      vim.cmd "hi default link BqfPreviewCursor Cursor"
-      vim.cmd "hi default link BqfPreviewRange IncSearch"
-      vim.cmd "hi default BqfSign ctermfg=14 guifg=Cyan"
-    end
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
-    config = function()
-      vim.g.mkdp_auto_start = 1
-    end,
-  },
-  {
-    "sindrets/diffview.nvim",
-    event = "BufRead",
-  },
-  {
-    "rmagatti/auto-session",
-    config = function ()
-      -- lvim.autocommands.custom_groups = {
-      --   "VimLeave", "*", "NvimTreeClose",
-      -- }
-      local opts = {
-        log_level = 'info',
-        auto_session_enable_last_session = false,
-        auto_session_root_dir = vim.fn.stdpath('data').."/sessions/",
-        -- auto_session_enabled = true,
-        auto_save_enabled = false,
-        auto_restore_enabled = false,
-        -- auto_session_suppress_dirs = nil,
-        pre_save_cmds = {"NvimTreeClose"},
-        -- post_restore_cmds = {"NvimTreeRefresh"}
-      }
+			vim.cmd("hi BqfPreviewBorder guifg=#50a14f ctermfg=71")
+			vim.cmd("hi link BqfPreviewRange Search")
+			vim.cmd("hi default link BqfPreviewFloat Normal")
+			vim.cmd("hi default link BqfPreviewBorder Normal")
+			vim.cmd("hi default link BqfPreviewCursor Cursor")
+			vim.cmd("hi default link BqfPreviewRange IncSearch")
+			vim.cmd("hi default BqfSign ctermfg=14 guifg=Cyan")
+		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		ft = "markdown",
+		config = function()
+			vim.g.mkdp_auto_start = 1
+		end,
+	},
+	{
+		"sindrets/diffview.nvim",
+		config = function()
+			-- Lua
+			local cb = require("diffview.config").diffview_callback
 
-      require('auto-session').setup(opts)
-      end
-    },
-    {
-      "tamago324/lir.nvim",
-      config = function()
-        require "user.lir"
-      end,
-    },
-    {
-      "mattn/emmet-vim",
-      setup = function ()
+			require("diffview").setup({
+				diff_binaries = false, -- Show diffs for binaries
+				enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
+				use_icons = true, -- Requires nvim-web-devicons
+				icons = { -- Only applies when use_icons is true.
+					folder_closed = "",
+					folder_open = "",
+				},
+				signs = {
+					fold_closed = "",
+					fold_open = "",
+				},
+				file_panel = {
+					position = "left", -- One of 'left', 'right', 'top', 'bottom'
+					width = 35, -- Only applies when position is 'left' or 'right'
+					height = 10, -- Only applies when position is 'top' or 'bottom'
+					listing_style = "tree", -- One of 'list' or 'tree'
+					tree_options = { -- Only applies when listing_style is 'tree'
+						flatten_dirs = true,
+						folder_statuses = "always",  -- One of 'never', 'only_folded' or 'always'.
+					},
+				},
+				file_history_panel = {
+					position = "bottom",
+					width = 35,
+					height = 16,
+					log_options = {
+						max_count = 256, -- Limit the number of commits
+						follow = false, -- Follow renames (only for single file)
+						all = false, -- Include all refs under 'refs/' including HEAD
+						merges = false, -- List only merge commits
+						no_merges = false, -- List no merge commits
+						reverse = false, -- List commits in reverse order
+					},
+				},
+				default_args = { -- Default args prepended to the arg-list for the listed commands
+					DiffviewOpen = {},
+					DiffviewFileHistory = {},
+				},
+				key_bindings = {
+					disable_defaults = false, -- Disable the default key bindings
+					-- The `view` bindings are active in the diff buffers, only when the current
+					-- tabpage is a Diffview.
+					view = {
+						["<tab>"] = cb("select_next_entry"), -- Open the diff for the next file
+						["<s-tab>"] = cb("select_prev_entry"), -- Open the diff for the previous file
+						["gf"] = cb("goto_file"), -- Open the file in a new split in previous tabpage
+						["<C-w><C-f>"] = cb("goto_file_split"), -- Open the file in a new split
+						["<C-w>gf"] = cb("goto_file_tab"), -- Open the file in a new tabpage
+						["<leader>e"] = cb("focus_files"), -- Bring focus to the files panel
+						["<leader>b"] = cb("toggle_files"), -- Toggle the files panel.
+					},
+					file_panel = {
+						["j"] = cb("next_entry"), -- Bring the cursor to the next file entry
+						["<down>"] = cb("next_entry"),
+						["k"] = cb("prev_entry"), -- Bring the cursor to the previous file entry.
+						["<up>"] = cb("prev_entry"),
+						["<cr>"] = cb("select_entry"), -- Open the diff for the selected entry.
+						["o"] = cb("select_entry"),
+						["<2-LeftMouse>"] = cb("select_entry"),
+						["-"] = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
+						["S"] = cb("stage_all"), -- Stage all entries.
+						["U"] = cb("unstage_all"), -- Unstage all entries.
+						["X"] = cb("restore_entry"), -- Restore entry to the state on the left side.
+						["R"] = cb("refresh_files"), -- Update stats and entries in the file list.
+						["<tab>"] = cb("select_next_entry"),
+						["<s-tab>"] = cb("select_prev_entry"),
+						["gf"] = cb("goto_file"),
+						["<C-w><C-f>"] = cb("goto_file_split"),
+						["<C-w>gf"] = cb("goto_file_tab"),
+						["i"] = cb("listing_style"), -- Toggle between 'list' and 'tree' views
+						["f"] = cb("toggle_flatten_dirs"), -- Flatten empty subdirectories in tree listing style.
+						["<leader>e"] = cb("focus_files"),
+						["<leader>b"] = cb("toggle_files"),
+					},
+					file_history_panel = {
+						["g!"] = cb("options"), -- Open the option panel
+						["<C-A-d>"] = cb("open_in_diffview"), -- Open the entry under the cursor in a diffview
+						["y"] = cb("copy_hash"), -- Copy the commit hash of the entry under the cursor
+						["zR"] = cb("open_all_folds"),
+						["zM"] = cb("close_all_folds"),
+						["j"] = cb("next_entry"),
+						["<down>"] = cb("next_entry"),
+						["k"] = cb("prev_entry"),
+						["<up>"] = cb("prev_entry"),
+						["<cr>"] = cb("select_entry"),
+						["o"] = cb("select_entry"),
+						["<2-LeftMouse>"] = cb("select_entry"),
+						["<tab>"] = cb("select_next_entry"),
+						["<s-tab>"] = cb("select_prev_entry"),
+						["gf"] = cb("goto_file"),
+						["<C-w><C-f>"] = cb("goto_file_split"),
+						["<C-w>gf"] = cb("goto_file_tab"),
+						["<leader>e"] = cb("focus_files"),
+						["<leader>b"] = cb("toggle_files"),
+					},
+					option_panel = {
+						["<tab>"] = cb("select"),
+						["q"] = cb("close"),
+					},
+				},
+			})
+		end,
+		event = "BufRead",
+	},
+	{
+		"rmagatti/auto-session",
+		config = function()
+			-- lvim.autocommands.custom_groups = {
+			--   "VimLeave", "*", "NvimTreeClose",
+			-- }
+			local opts = {
+				log_level = "info",
+				auto_session_enable_last_session = false,
+				auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
+				-- auto_session_enabled = true,
+				auto_save_enabled = false,
+				auto_restore_enabled = false,
+				-- auto_session_suppress_dirs = nil,
+				pre_save_cmds = { "NvimTreeClose" },
+				-- post_restore_cmds = {"NvimTreeRefresh"}
+			}
 
-        vim.g.user_emmet_leader_key = '<c-y>'
-        vim.g.user_emmet_settings = {
-          indent_blockelement = 1,
-        }
-      end,
-      ft = {"html", "htmldjango"},
-    },
-    -- {
-    --   "nvim-telescope/telescope-fzy-native.nvim",
-    --   run = "make",
-    --   event = "BufRead",
-    -- },
-   -- { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-    {
-      "ray-x/lsp_signature.nvim",
-      event = "InsertEnter",
-      config = function()
-        require("user.lsp_signature").config()
-      end,
-    },
-    {
-      "windwp/nvim-spectre",
-      event = "BufRead",
-      config = function()
-        require("user.spectre").config()
-      end,
-    },
-    {
-      "windwp/nvim-ts-autotag",
-      event = "InsertEnter",
-      config = function ()
-        -- require('nvim-ts-autotag').setup({
-        --   -- currently disable for htmldjango due to incompatible
-        --   filetypes = { "html" , "xml" },
-        -- })
-
-        require('nvim-ts-autotag').setup()
-      end,
-      ft = { 'html', 'htmldjango', 'xml' }
-    },
-    {
-      "liuchengxu/vista.vim"
-    },
-    {
-      "jpalardy/vim-slime",
-      ft = { 'python', 'javascript' },
-      config = function ()
-        require("user.vim_slime").config()
-      end
-    },
-    {
-      "hanschen/vim-ipython-cell",
-      ft = 'python'
-    },
-    {
-      "mg979/vim-visual-multi"
-    },
-    -- {
-    --   "sotte/presenting.vim"
-    -- },
-    {
-      "vim-pandoc/vim-pandoc",
-      config = function ()
-          -- vim.g.pandoc[filetypes]
-      end
-    },
-    {
-      "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
-    },
-    -- {
-    --   'andersevenrud/compe-tmux',
-    --   branch = 'cmp',
-    -- }
-    -- {
-    --   "tweekmonster/django-plus.vim",
-    -- }
---     {
---       "ibhagwan/fzf-lua",
---       requires = {
---         "vijaymarupudi/nvim-fzf",
---         "kyazdani42/nvim-web-devicons"
---       },
---       config = function ()
---         vim.api.nvim_set_keymap('n', '<c-P>',
---             "<cmd>lua require('fzf-lua').files()<CR>",
---             { noremap = true, silent = true })
--- 
---         vim.api.nvim_set_keymap('n', '<c-[>',
---             "<cmd>lua require('fzf-lua').live_grep()<CR>",
---             { noremap = true, silent = true })
---       end
---     }
-  }
+			require("auto-session").setup(opts)
+		end,
+	},
+	{
+		"mattn/emmet-vim",
+		setup = function()
+			vim.g.user_emmet_leader_key = "<c-y>"
+			vim.g.user_emmet_settings = {
+				indent_blockelement = 1,
+			}
+		end,
+		ft = { "html", "htmldjango" },
+	},
+	--    -- { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "InsertEnter",
+		config = function()
+			require("user.lsp_signature").config()
+		end,
+	},
+	{
+		"windwp/nvim-spectre",
+		event = "BufRead",
+		config = function()
+			require("user.spectre").config()
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+		ft = { "html", "htmldjango", "xml" },
+	},
+	{
+		"liuchengxu/vista.vim",
+	},
+	{
+		"jpalardy/vim-slime",
+		ft = { "python", "javascript" },
+		config = function()
+			require("user.vim_slime").config()
+		end,
+	},
+	{
+		"hanschen/vim-ipython-cell",
+		ft = "python",
+	},
+	{
+		"mg979/vim-visual-multi",
+	},
+	-- {
+	--   "sotte/presenting.vim"
+	-- },
+	-- {
+	--   "vim-pandoc/vim-pandoc",
+	--   config = function ()
+	--       -- vim.g.pandoc[filetypes]
+	--   end
+	-- },
+	{
+		"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+	},
+	--     -- {
+	--     --   'andersevenrud/compe-tmux',
+	--     --   branch = 'cmp',
+	--     -- }
+	--     -- {
+	--     --   "tweekmonster/django-plus.vim",
+	--     -- }
+}
