@@ -61,6 +61,9 @@ lvim.keys.normal_mode = {
 	["<C-k>"] = "<C-w>k",
 	["<C-l>"] = "<C-w>l",
 
+  ["j"] = "gj",
+  ["k"] = "gk",
+
 	-- Resize with arrows
 	["<Up>"] = ":resize +2<CR>",
 	["<Down>"] = ":resize -2<CR>",
