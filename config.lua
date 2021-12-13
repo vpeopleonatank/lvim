@@ -257,7 +257,7 @@ lvim.builtin.which_key.mappings["x"] = {
 	r = { "<cmd>Trouble lsp_references<cr>", "References" },
 	f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
 	w = { "<cmd>Trouble lsp_workspace_diagnostics<CR>", "Trouble Workspaces" },
-	d = { "<cmd>Trouble lsp_document_diagnostics<CR>", "Trouble Document" },
+	d = { "<cmd>Trouble document_diagnostics<CR>", "Trouble Document" },
 	l = { "<cmd>Trouble loclist<CR>", "Trouble Location List" },
 	q = { "<cmd>Trouble quickfix<CR>", "Trouble Quickfix List" },
 }
@@ -416,7 +416,7 @@ lvim.plugins = {
 				height = 10, -- height of the trouble list when position is top or bottom
 				width = 50, -- width of the list when position is left or right
 				icons = true, -- use devicons for filenames
-				mode = "lsp_document_diagnostics",
+				mode = "document_diagnostics",
 				action_keys = { -- key mappings for actions in the trouble list
 					-- map to {} to remove a mapping, for example:
 					-- close = {},
@@ -443,7 +443,7 @@ lvim.plugins = {
 				auto_close = true, -- automatically close the list when you have no diagnostics
 				auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
 				auto_fold = false, -- automatically fold a file trouble list at creation
-				use_lsp_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
+				use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
 			})
 		end,
 	},
