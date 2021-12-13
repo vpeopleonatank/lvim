@@ -78,6 +78,9 @@ lvim.keys.normal_mode = {
 	-- LSP/Trouble
 	["gR"] = "<cmd>Trouble lsp_references<CR>",
 
+	["H"] = "H",
+	["L"] = "L",
+
 	-- Barbar.nvim
 	["`"] = ":BufferNext<CR>",
 	["~"] = ":BufferPrevious<CR>",
