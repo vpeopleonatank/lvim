@@ -24,6 +24,7 @@ init_custom_options()
 -- Key mappings
 -- *
 lvim.leader = "space"
+lvim.builtin.treesitter.indent.disable = { "python", "yaml"}
 -- lvim.builtin.cmp.sources = {
 --   { name = 'tmux',
 --     opts = {
