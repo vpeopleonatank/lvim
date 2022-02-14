@@ -83,25 +83,25 @@ lvim.keys.normal_mode = {
 	["L"] = "L",
 
 	-- Barbar.nvim
-	["`"] = ":BufferNext<CR>",
-	["~"] = ":BufferPrevious<CR>",
-	["<A-<>"] = ":BufferMovePrevious<CR>",
-	["<A->>"] = ":BufferMoveNext<CR>",
+	["`"] = ":BufferLineCycleNext<CR>",
+	["~"] = ":BufferLineCyclePrev<CR>",
+	["<A-<>"] = ":BufferLineMovePrev<CR>",
+	["<A->>"] = ":BufferLineMoveNext<CR>",
 
-	["<leader>1"] = ":BufferGoto 1<CR>",
-	["<leader>2"] = ":BufferGoto 2<CR>",
-	["<leader>3"] = ":BufferGoto 3<CR>",
-	["<leader>4"] = ":BufferGoto 4<CR>",
-	["<leader>5"] = ":BufferGoto 5<CR>",
-	["<leader>6"] = ":BufferGoto 6<CR>",
-	["<leader>7"] = ":BufferGoto 7<CR>",
-	["<leader>8"] = ":BufferGoto 8<CR>",
-	["<leader>9"] = ":BufferGoto 9<CR>",
-	["<leader>0"] = ":BufferGoto 0<CR>",
+	["<leader>1"] = ":BufferLineGoToBuffer 1<CR>",
+	["<leader>2"] = ":BufferLineGoToBuffer 2<CR>",
+	["<leader>3"] = ":BufferLineGoToBuffer 3<CR>",
+	["<leader>4"] = ":BufferLineGoToBuffer 4<CR>",
+	["<leader>5"] = ":BufferLineGoToBuffer 5<CR>",
+	["<leader>6"] = ":BufferLineGoToBuffer 6<CR>",
+	["<leader>7"] = ":BufferLineGoToBuffer 7<CR>",
+	["<leader>8"] = ":BufferLineGoToBuffer 8<CR>",
+	["<leader>9"] = ":BufferLineGoToBuffer 9<CR>",
+	["<leader>0"] = ":BufferLineGoToBuffer 0<CR>",
 
-	["<A-q>"] = ":BufferClose<CR>",
-	["<A-w>"] = ":BufferWipeout<CR>",
-	["<A-b>"] = ":BufferCloseAllButCurrent<CR>",
+	-- ["<A-q>"] = ":bd<CR>",
+	["<A-w>"] = ":bd<CR>",
+	-- ["<A-b>"] = ":BufferCloseAllButCurrent<CR>",
 }
 
 lvim.keys.term_mode = {
@@ -199,7 +199,6 @@ lvim.builtin.terminal.shading_factor = 1
 lvim.builtin.nvimtree.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
-lvim.builtin.nvimtree.hide_dotfiles = 0
 
 -- *
 -- Treesitter
@@ -710,4 +709,18 @@ lvim.plugins = {
 	--     -- {
 	--     --   "tweekmonster/django-plus.vim",
 	--     -- }
+  {
+    "ray-x/go.nvim",
+    config = function()
+      local path = require 'nvim-lsp-installer.path'
+      local install_root_dir = path.concat {vim.fn.stdpath 'data', 'lsp_servers'}
+
+      require('go').setup({
+        gopls_cmd = {install_root_dir .. '/go/gopls'},
+        filstruct = 'gopls',
+        dap_debug = true,
+        dap_debug_gui = true
+      })
+    end,
+  }
 }
