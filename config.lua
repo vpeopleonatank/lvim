@@ -36,6 +36,7 @@ lvim.builtin.treesitter.indent.disable = { "python", "yaml"}
 --   }
 -- }
 
+
 lvim.keys.insert_mode = {
 	-- Disable arrow keys
 	["<Up>"] = "<NOP>",
@@ -180,6 +181,14 @@ end
 lvim.builtin.telescope.defaults.mappings = get_telescope_mappings()
 
 -- *
+-- Debug adapter protocol
+-- *
+-- lvim.builtin.dap.on_config_done = function(dap)
+
+-- end
+lvim.builtin.dap.active = true
+
+-- *
 -- Dashboard
 -- *
 lvim.builtin.dashboard.active = true
@@ -211,6 +220,7 @@ lvim.builtin.nvimtree.show_icons.git = 1
 -- lvim.builtin.treesitter.context_commentstring.enable = true
 -- lvim.builtin.treesitter.autotag.enable = true
 -- lvim.builtin.treesitter.autotag.filetypes = { "html", "htmldjango", "xml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"}
+
 
 -- *
 -- Whichkey
@@ -722,5 +732,8 @@ lvim.plugins = {
         dap_debug_gui = true
       })
     end,
-  }
+  },
+    -- { "nvim-telescope/telescope-dap.nvim" },
+    { "rcarriga/nvim-dap-ui" },
+    -- { "leoluz/nvim-dap-go"}
 }
