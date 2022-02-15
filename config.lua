@@ -313,7 +313,7 @@ linters.setup({
 		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	},
 })
-
+vim.g.tokyonight_style = "night"
 lvim.colorscheme = 'tokyonight'
 lvim.builtin.lualine.options.theme = "tokyonight"
 
