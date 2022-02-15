@@ -313,6 +313,10 @@ linters.setup({
 		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	},
 })
+
+lvim.colorscheme = 'tokyonight'
+lvim.builtin.lualine.options.theme = "tokyonight"
+
 -- *
 -- Additional Plugins
 -- *
@@ -339,8 +343,8 @@ lvim.plugins = {
 	-- 			respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
 	-- 			cursor_scrolls_alone = false, -- The cursor will keep on scrolling even if the window cannot scroll further
 	-- 			easing_function = nil, -- Default easing function
-	-- 		})
 	-- 	end,
+	-- 		})
 	-- },
 	{
 		"folke/zen-mode.nvim",
@@ -736,4 +740,6 @@ lvim.plugins = {
     -- { "nvim-telescope/telescope-dap.nvim" },
     { "rcarriga/nvim-dap-ui" },
     -- { "leoluz/nvim-dap-go"}
+  {"folke/tokyonight.nvim"},
+  {"henriquehbr/nvim-startup.lua"}
 }
