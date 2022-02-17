@@ -741,5 +741,5 @@ lvim.plugins = {
     { "rcarriga/nvim-dap-ui" },
     -- { "leoluz/nvim-dap-go"}
   {"folke/tokyonight.nvim"},
-  {"henriquehbr/nvim-startup.lua"}
+  {"dstein64/vim-startuptime"}
 }
