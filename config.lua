@@ -741,5 +741,12 @@ lvim.plugins = {
     { "rcarriga/nvim-dap-ui" },
     -- { "leoluz/nvim-dap-go"}
   {"folke/tokyonight.nvim"},
-  {"dstein64/vim-startuptime"}
+  {"dstein64/vim-startuptime"},
+  {
+    "danymat/neogen",
+    config = function()
+        require('neogen').setup {}
+    end,
+    requires = "nvim-treesitter/nvim-treesitter",
+  }
 }
