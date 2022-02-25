@@ -297,6 +297,10 @@ formatters.setup({
 		filetypes = { "python" },
 	},
 	{
+		exe = "isort",
+		filetypes = { "python" },
+	},
+	{
 		exe = "stylua",
 		filetypes = { "lua" },
 	},
