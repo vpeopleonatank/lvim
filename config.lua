@@ -649,16 +649,16 @@ lvim.plugins = {
 			require("auto-session").setup(opts)
 		end,
 	},
-	{
-		"mattn/emmet-vim",
-		setup = function()
-			vim.g.user_emmet_leader_key = "<c-y>"
-			vim.g.user_emmet_settings = {
-				indent_blockelement = 1,
-			}
-		end,
-		ft = { "html", "htmldjango" },
-	},
+	-- {
+	-- 	"mattn/emmet-vim",
+	-- 	setup = function()
+	-- 		vim.g.user_emmet_leader_key = "<c-y>"
+	-- 		vim.g.user_emmet_settings = {
+	-- 			indent_blockelement = 1,
+	-- 		}
+	-- 	end,
+	-- 	ft = { "html", "htmldjango" },
+	-- },
 	--    -- { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 	{
 		"ray-x/lsp_signature.nvim",
