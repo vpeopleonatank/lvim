@@ -191,8 +191,8 @@ lvim.builtin.dap.active = true
 -- *
 -- Dashboard
 -- *
-lvim.builtin.dashboard.active = true
-lvim.builtin.dashboard.custom_section.a.command = "Telescope find_files find_command=rg,--ignore,--hidden,--files"
+-- lvim.builtin.alpha.active = true
+-- lvim.builtin.alpha.custom_section.a.command = "Telescope find_files find_command=rg,--ignore,--hidden,--files"
 
 -- *
 -- Terminal
@@ -207,7 +207,7 @@ lvim.builtin.terminal.shading_factor = 1
 -- because of session-related bug
 lvim.builtin.nvimtree.active = true
 lvim.builtin.nvimtree.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 1
+-- lvim.builtin.nvimtree.show_icons.git = 1
 
 -- *
 -- Treesitter
@@ -404,22 +404,22 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = "BufRead",
-		config = function()
-			require("indent_blankline").setup({
-				char = "▏",
-				space_char_blankline = " ",
-				filetype_exclude = { "dashboard", "Trouble", "neogitstastus" },
-				show_trailing_blankline_indent = false,
-				buftype_exclude = { "help", "terminal", "nofile" },
-				char_highlight_list = { "Method", "Function", "Conditional", "Special", "Underlined" },
-			})
+	--{
+	--	"lukas-reineke/indent-blankline.nvim",
+	--	event = "BufRead",
+	--	config = function()
+	--		require("indent_blankline").setup({
+	--			char = "▏",
+	--			space_char_blankline = " ",
+	--			filetype_exclude = { "dashboard", "Trouble", "neogitstastus" },
+	--			show_trailing_blankline_indent = false,
+	--			buftype_exclude = { "help", "terminal", "nofile" },
+	--			char_highlight_list = { "Method", "Function", "Conditional", "Special", "Underlined" },
+	--		})
 
-			vim.cmd("highlight IndentBlanklineChar guifg=#666B70 gui=nocombine")
-		end,
-	},
+	--		vim.cmd("highlight IndentBlanklineChar guifg=#666B70 gui=nocombine")
+	--	end,
+	--},
 	{
 		"andymass/vim-matchup",
 		event = "CursorMoved",
@@ -536,26 +536,10 @@ lvim.plugins = {
 					fold_open = "",
 				},
 				file_panel = {
-					position = "left", -- One of 'left', 'right', 'top', 'bottom'
-					width = 35, -- Only applies when position is 'left' or 'right'
-					height = 10, -- Only applies when position is 'top' or 'bottom'
 					listing_style = "tree", -- One of 'list' or 'tree'
 					tree_options = { -- Only applies when listing_style is 'tree'
 						flatten_dirs = true,
 						folder_statuses = "always", -- One of 'never', 'only_folded' or 'always'.
-					},
-				},
-				file_history_panel = {
-					position = "bottom",
-					width = 35,
-					height = 16,
-					log_options = {
-						max_count = 256, -- Limit the number of commits
-						follow = false, -- Follow renames (only for single file)
-						all = false, -- Include all refs under 'refs/' including HEAD
-						merges = false, -- List only merge commits
-						no_merges = false, -- List no merge commits
-						reverse = false, -- List commits in reverse order
 					},
 				},
 				default_args = { -- Default args prepended to the arg-list for the listed commands
@@ -727,24 +711,24 @@ lvim.plugins = {
 	--     -- {
 	--     --   "tweekmonster/django-plus.vim",
 	--     -- }
-  {
-    "ray-x/go.nvim",
-    config = function()
-      local path = require 'nvim-lsp-installer.path'
-      local install_root_dir = path.concat {vim.fn.stdpath 'data', 'lsp_servers'}
+  -- {
+  --   "ray-x/go.nvim",
+  --   config = function()
+  --     local path = require 'nvim-lsp-installer.path'
+  --     local install_root_dir = path.concat {vim.fn.stdpath 'data', 'lsp_servers'}
 
-      require('go').setup({
-        gopls_cmd = {install_root_dir .. '/go/gopls'},
-        filstruct = 'gopls',
-        dap_debug = true,
-        dap_debug_gui = true
-      })
-    end,
-  },
+  --     require('go').setup({
+  --       gopls_cmd = {install_root_dir .. '/go/gopls'},
+  --       filstruct = 'gopls',
+  --       dap_debug = true,
+  --       dap_debug_gui = true
+  --     })
+  --   end,
+  -- },
     -- { "nvim-telescope/telescope-dap.nvim" },
-    { "rcarriga/nvim-dap-ui" },
+    --{ "rcarriga/nvim-dap-ui" },
     -- { "leoluz/nvim-dap-go"}
-  {"folke/tokyonight.nvim"},
+  --{"folke/tokyonight.nvim"},
   {"dstein64/vim-startuptime"},
   {
     "danymat/neogen",
