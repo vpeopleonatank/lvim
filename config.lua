@@ -143,7 +143,7 @@ lvim.lint_on_save = true
 -- Telescope
 -- *
 lvim.builtin.telescope.active = true
-lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git", "node_modules" }
+-- lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git", "node_modules" }
 local get_telescope_mappings = function()
 	local actions = require("telescope.actions")
 	return {
