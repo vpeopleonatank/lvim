@@ -4,12 +4,12 @@ M.config = function()
   vim.g.slime_target = 'tmux'
   vim.g.slime_python_ipython = 1
   SOCKET_NAME = ""
-  for w in os.getenv("TMUX"):gmatch("([^,]+)") do
-    SOCKET_NAME = w
-    break
-  end
-
-  if SOCKET_NAME == nil then
+  if os.getenv("TMUX") ~= nil then
+    for w in os.getenv("TMUX"):gmatch("([^,]+)") do
+      SOCKET_NAME = w
+      break
+    end
+  else
     SOCKET_NAME = "default"
   end
 
