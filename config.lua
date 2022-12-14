@@ -154,6 +154,15 @@ lvim.keys.visual_block_mode = {
 }
 
 -- *
+-- Lsp config
+-- *
+require('lspconfig').gdscript.setup{
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+
+-- *
 -- Format
 -- *
 lvim.format_on_save = false
