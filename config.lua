@@ -1,3 +1,27 @@
+-- Enable powershell as your default shell
+vim.opt.shell = "pwsh.exe -NoLogo"
+vim.opt.shellcmdflag =
+  "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+vim.cmd [[
+		let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+		let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+		set shellquote= shellxquote=
+  ]]
+
+-- Set a compatible clipboard manager
+vim.g.clipboard = {
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --lf",
+    ["*"] = "win32yank.exe -o --lf",
+  },
+}
+
+
+
 local init_custom_options = function()
 	local custom_options = {
 		relativenumber = true, -- Set relative numbered lines
@@ -166,16 +190,16 @@ local get_telescope_mappings = function()
 end
 
 lvim.builtin.telescope.extensions = {
-	fzf = {
-		fuzzy = true, -- false will only do exact matching
-		override_generic_sorter = true, -- override the generic sorter
-		override_file_sorter = true, -- override the file sorter
-		case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-		-- the default case_mode is "smart_case"
-	},
+	-- fzf = {
+	-- 	fuzzy = true, -- false will only do exact matching
+	-- 	override_generic_sorter = true, -- override the generic sorter
+	-- 	override_file_sorter = true, -- override the file sorter
+	-- 	case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+	-- 	-- the default case_mode is "smart_case"
+	-- },
 }
 lvim.builtin.telescope.on_config_done = function()
-	require("telescope").load_extension("fzf")
+	-- require("telescope").load_extension("fzf")
 end
 
 lvim.builtin.telescope.defaults.mappings = get_telescope_mappings()
@@ -206,7 +230,14 @@ lvim.builtin.terminal.shading_factor = 1
 -- currently revert back to commit dc630d199a0ad593036d193232c6b338aa0407e3
 -- because of session-related bug
 lvim.builtin.nvimtree.active = true
-lvim.builtin.nvimtree.side = "left"
+lvim.builtin.nvimtree.setup.diagnostics.enable = nil
+lvim.builtin.nvimtree.setup.filters.custom = nil
+lvim.builtin.nvimtree.setup.git.enable = nil
+lvim.builtin.nvimtree.setup.update_cwd = nil
+lvim.builtin.nvimtree.setup.update_focused_file.update_cwd = nil
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.setup.renderer.highlight_git = nil
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = nil
 -- lvim.builtin.nvimtree.show_icons.git = 1
 
 -- *
@@ -317,9 +348,9 @@ linters.setup({
 		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	},
 })
-vim.g.tokyonight_style = "night"
-lvim.colorscheme = 'tokyonight'
-lvim.builtin.lualine.options.theme = "tokyonight"
+-- vim.g.tokyonight_style = "night"
+lvim.colorscheme = 'lunar'
+-- lvim.builtin.lualine.options.theme = "tokyonight"
 
 -- *
 -- Additional Plugins
@@ -334,22 +365,6 @@ lvim.plugins = {
 			vim.g.gitblame_enabled = 0
 		end,
 	},
-	-- {
-	-- 	"karb94/neoscroll.nvim",
-	-- 	event = "BufRead",
-	-- 	config = function()
-	-- 		require("neoscroll").setup({
-	-- 			-- All these keys will be mapped to their corresponding default scrolling animation
-	-- 			mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
-	-- 			hide_cursor = true, -- Hide cursor while scrolling
-	-- 			stop_eof = true, -- Stop at <EOF> when scrolling downwards
-	-- 			use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-	-- 			respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-	-- 			cursor_scrolls_alone = false, -- The cursor will keep on scrolling even if the window cannot scroll further
-	-- 			easing_function = nil, -- Default easing function
-	-- 	end,
-	-- 		})
-	-- },
 	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
