@@ -328,10 +328,10 @@ formatters.setup({
 		exe = "clang_format",
 		filetypes = { "c", "cpp" },
 	},
-	{
-		exe = "prettierd",
-		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
-	},
+	-- {
+	-- 	exe = "prettierd",
+	-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+	-- },
 	{
 		exe = "black",
 		filetypes = { "python" },
@@ -352,10 +352,10 @@ linters.setup({
 		exe = "flake8",
 		filetypes = { "python" },
 	},
-	{
-		exe = "eslint_d",
-		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-	},
+	-- {
+	-- 	exe = "eslint_d",
+	-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	-- },
 })
 -- vim.g.tokyonight_style = "night"
 lvim.colorscheme = 'lunar'
