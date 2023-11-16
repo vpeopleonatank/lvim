@@ -24,7 +24,7 @@ init_custom_options()
 -- Key mappings
 -- *
 lvim.leader = "space"
-lvim.builtin.treesitter.indent.disable = { "python", "yaml"}
+lvim.builtin.treesitter.indent.disable = { "python", "yaml" }
 -- lvim.builtin.cmp.sources = {
 --   { name = 'tmux',
 --     opts = {
@@ -36,7 +36,6 @@ lvim.builtin.treesitter.indent.disable = { "python", "yaml"}
 --   }
 -- }
 
-
 lvim.keys.insert_mode = {
 	-- Disable arrow keys
 	["<Up>"] = "<NOP>",
@@ -47,7 +46,6 @@ lvim.keys.insert_mode = {
 	["<C-j>"] = "<esc>o",
 	["<C-k>"] = "<esc>O",
 	["<C-l>"] = "<CR><ESC>O",
-
 }
 
 lvim.keys.normal_mode = {
@@ -63,8 +61,8 @@ lvim.keys.normal_mode = {
 	["<C-k>"] = "<C-w>k",
 	["<C-l>"] = "<C-w>l",
 
-  ["j"] = "gj",
-  ["k"] = "gk",
+	["j"] = "gj",
+	["k"] = "gk",
 
 	-- Resize with arrows
 	["<Up>"] = ":resize +2<CR>",
@@ -221,7 +219,6 @@ lvim.builtin.nvimtree.side = "left"
 -- lvim.builtin.treesitter.autotag.enable = true
 -- lvim.builtin.treesitter.autotag.filetypes = { "html", "htmldjango", "xml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"}
 
-
 -- *
 -- Whichkey
 -- *
@@ -318,8 +315,10 @@ linters.setup({
 	},
 })
 vim.g.tokyonight_style = "night"
-lvim.colorscheme = 'tokyonight'
+lvim.colorscheme = "tokyonight"
 lvim.builtin.lualine.options.theme = "tokyonight"
+
+require("lvim.lsp.manager").setup("angularls")
 
 -- *
 -- Additional Plugins
@@ -329,7 +328,7 @@ lvim.plugins = {
 	{
 		"f-person/git-blame.nvim",
 		event = "BufRead",
-		setup = function()
+		init = function()
 			vim.cmd("highlight default link gitblame SpecialComment")
 			vim.g.gitblame_enabled = 0
 		end,
@@ -430,7 +429,7 @@ lvim.plugins = {
 	-- { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" },
 	{
 		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
+		-- dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("trouble").setup({
 				position = "bottom", -- position of the list can be: bottom, top, left, right
@@ -511,7 +510,7 @@ lvim.plugins = {
 	},
 	{
 		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
+		build = "cd app && npm install",
 		ft = "markdown",
 		config = function()
 			vim.g.mkdp_auto_start = 1
@@ -526,7 +525,7 @@ lvim.plugins = {
 			require("diffview").setup({
 				diff_binaries = false, -- Show diffs for binaries
 				enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
-				use_icons = true, -- Requires nvim-web-devicons
+				-- use_icons = true, -- dependencies nvim-web-devicons
 				icons = { -- Only applies when use_icons is true.
 					folder_closed = "",
 					folder_open = "",
@@ -711,30 +710,30 @@ lvim.plugins = {
 	--     -- {
 	--     --   "tweekmonster/django-plus.vim",
 	--     -- }
-  -- {
-  --   "ray-x/go.nvim",
-  --   config = function()
-  --     local path = require 'nvim-lsp-installer.path'
-  --     local install_root_dir = path.concat {vim.fn.stdpath 'data', 'lsp_servers'}
+	-- {
+	--   "ray-x/go.nvim",
+	--   config = function()
+	--     local path = require 'nvim-lsp-installer.path'
+	--     local install_root_dir = path.concat {vim.fn.stdpath 'data', 'lsp_servers'}
 
-  --     require('go').setup({
-  --       gopls_cmd = {install_root_dir .. '/go/gopls'},
-  --       filstruct = 'gopls',
-  --       dap_debug = true,
-  --       dap_debug_gui = true
-  --     })
-  --   end,
-  -- },
-    -- { "nvim-telescope/telescope-dap.nvim" },
-    --{ "rcarriga/nvim-dap-ui" },
-    -- { "leoluz/nvim-dap-go"}
-  --{"folke/tokyonight.nvim"},
-  {"dstein64/vim-startuptime"},
-  {
-    "danymat/neogen",
-    config = function()
-        require('neogen').setup {}
-    end,
-    requires = "nvim-treesitter/nvim-treesitter",
-  }
+	--     require('go').setup({
+	--       gopls_cmd = {install_root_dir .. '/go/gopls'},
+	--       filstruct = 'gopls',
+	--       dap_debug = true,
+	--       dap_debug_gui = true
+	--     })
+	--   end,
+	-- },
+	-- { "nvim-telescope/telescope-dap.nvim" },
+	--{ "rcarriga/nvim-dap-ui" },
+	-- { "leoluz/nvim-dap-go"}
+	--{"folke/tokyonight.nvim"},
+	{ "dstein64/vim-startuptime" },
+	{
+		"danymat/neogen",
+		config = function()
+			require("neogen").setup({})
+		end,
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
 }
